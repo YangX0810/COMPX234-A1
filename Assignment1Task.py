@@ -72,7 +72,8 @@ class Assignment1:
                 self.printerSleep()
                 # Grab the request at the head of the queue and print it
                 # Write code here
-            
+                if not self.outer.sim_active:
+                     break
                 self.outer.lock.acquire()
                 self.printDoc(self.printerID)
                 self.outer.lock.relase()
@@ -99,7 +100,8 @@ class Assignment1:
                 self.machineSleep()
                 # Machine wakes up and sends a print request
                 # Write code here
-                
+                if not self.outer.sim_active:
+                    break
                 self.outer.lock.acquire()
                 self.printRequest(self.machineID)
                 self.outer.lock.relase()
